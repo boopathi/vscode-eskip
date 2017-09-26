@@ -1,0 +1,88 @@
+{
+  "$schema":
+    "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Skipper eskip",
+  "scopeName": "text.eskip",
+  "fileTypes": ["eskip"],
+  "patterns": [
+    {
+      "match": "->",
+      "name": "keyword.control"
+    },
+    {
+      "match": "&&",
+      "name": "keyword.operator"
+    },
+    {
+      "match": "\\*",
+      "name": "meta.selector"
+    },
+    {
+      "match": "[a-zA-Z0-9_]+:",
+      "name": "markup.heading"
+    },
+    {
+      "match": "[a-zA-Z0-9_]+\\(",
+      "name": "variable.name"
+    },
+    {
+      "match": "//(.*)",
+      "name": "comment.eskip"
+    },
+    {
+      "begin": "/",
+      "beginCaptures": {
+        "1": {
+          "name": "markup.punctuation.quote.beginning"
+        }
+      },
+      "end": "/",
+      "endCaptures": {
+        "1": {
+          "name": "markup.punctuation.quote.end"
+        }
+      },
+      "name": "constant.regexp"
+    },
+    {
+      "match": "<(.*)>",
+      "name": "entity.name.tag"
+    },
+    {
+      "match": "[0-9]+",
+      "name": "constant.numeric"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    }
+  ],
+  "foldingStartMarker": "[a-zA-Z0-9_]:|\\n",
+  "foldingStopMarker": ";",
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.eskip",
+          "match": "\\b(Path|PathSubtree|PathRegexp|Host|Method|\\*)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.eskip",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.eskip",
+          "match": "\\\\."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "vscode-eskip",
+    "displayName": "vscode-eskip",
+    "description": "Skipper eskip file language extension for vscode",
+    "version": "0.0.1",
+    "publisher": "heisenbugger",
+    "engines": {
+        "vscode": "^1.16.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "eskip",
+            "aliases": ["Skipper eskip", "eskip"],
+            "extensions": [".eskip"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "eskip",
+            "scopeName": "text.eskip",
+            "path": "./syntaxes/eskip.tmLanguage.json"
+        }]
+    }
+}
