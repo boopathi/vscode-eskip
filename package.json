@@ -2,7 +2,7 @@
   "name": "eskip",
   "displayName": "eskip",
   "description": "Skipper eskip file language extension for vscode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "boopathi",
   "icon": "images/skipper.png",
   "engines": {
@@ -12,13 +12,20 @@
     "type": "git",
     "url": "https://github.com/boopathi/vscode-eskip"
   },
-  "categories": ["Languages"],
+  "categories": [
+    "Languages"
+  ],
   "contributes": {
     "languages": [
       {
         "id": "eskip",
-        "aliases": ["Skipper eskip", "eskip"],
-        "extensions": [".eskip"],
+        "aliases": [
+          "Skipper eskip",
+          "eskip"
+        ],
+        "extensions": [
+          ".eskip"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],
