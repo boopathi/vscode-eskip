@@ -3,7 +3,7 @@
   "displayName": "eskip",
   "description": "Skipper eskip file language extension for vscode",
   "version": "0.0.1",
-  "publisher": "heisenbugger",
+  "publisher": "boopathi",
   "engines": {
     "vscode": "^1.16.0"
   },
