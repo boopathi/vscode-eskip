@@ -4,8 +4,13 @@
   "description": "Skipper eskip file language extension for vscode",
   "version": "0.0.1",
   "publisher": "boopathi",
+  "icon": "images/skipper.png",
   "engines": {
     "vscode": "^1.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boopathi/vscode-eskip"
   },
   "categories": ["Languages"],
   "contributes": {
