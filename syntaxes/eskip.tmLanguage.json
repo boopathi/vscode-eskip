@@ -53,9 +53,6 @@
       "name": "constant.numeric"
     },
     {
-      "include": "#comments"
-    },
-    {
       "include": "#keywords"
     },
     {
