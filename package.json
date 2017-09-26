@@ -1,16 +1,14 @@
 {
   "name": "eskip",
-  "displayName": "eskip",
-  "description": "Skipper eskip file language extension for vscode",
   "version": "0.0.2",
-  "publisher": "boopathi",
-  "icon": "images/skipper.png",
-  "engines": {
-    "vscode": "^1.16.0"
-  },
+  "description": "Skipper eskip file language extension for vscode",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/boopathi/vscode-eskip"
+  },
+  "engines": {
+    "vscode": "^1.16.0"
   },
   "categories": [
     "Languages"
@@ -36,5 +34,8 @@
         "path": "./syntaxes/eskip.tmLanguage.json"
       }
     ]
-  }
+  },
+  "displayName": "eskip",
+  "icon": "images/skipper.png",
+  "publisher": "boopathi"
 }
