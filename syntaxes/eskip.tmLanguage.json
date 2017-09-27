@@ -9,17 +9,17 @@
       "match": "\\*",
       "name": "meta.selector"
     },
+    { "include": "#routeid" },
     { "include": "#comments" },
     { "include": "#keywords" },
     { "include": "#tags" },
     { "include": "#strings" },
     { "include": "#regexp" },
     { "include": "#numeric" },
-    { "include": "#routeid" },
     { "include": "#operators" },
     { "include": "#filter" }
   ],
-  "foldingStartMarker": "[a-zA-Z0-9_]:|\\n",
+  "foldingStartMarker": "([[:alpha:][:digit:]]+):|\\*",
   "foldingStopMarker": ";",
   "repository": {
     "comments": {
@@ -82,13 +82,13 @@
       "name": "header.routeid",
       "patterns": [
         {
-          "begin": "([[:alpha:]_]+)",
+          "begin": "([[:alpha:][:digit:]_]+):",
           "beginCaptures": {
             "1": {
               "name": "markup.heading"
             }
           },
-          "end": ":"
+          "end": ""
         }
       ]
     },
@@ -119,7 +119,7 @@
       "patterns": [
         {
           "name": "variable.name",
-          "begin": "\\s*([[:alpha:]_]+)\\s*(\\()\\s*",
+          "begin": "\\s*([[:alpha:][:digit:]_]+)\\s*(\\()\\s*",
           "beginCaptures": {
             "1": {
               "name": "support.function"
