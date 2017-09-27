@@ -6,62 +6,30 @@
   "fileTypes": ["eskip"],
   "patterns": [
     {
-      "match": "->",
-      "name": "keyword.control"
-    },
-    {
-      "match": "&&",
-      "name": "keyword.operator"
-    },
-    {
       "match": "\\*",
       "name": "meta.selector"
     },
-    {
-      "match": "[a-zA-Z0-9_]+:",
-      "name": "markup.heading"
-    },
-    {
-      "match": "[a-zA-Z0-9_]+\\(",
-      "name": "variable.name"
-    },
-    {
-      "match": "//(.*)",
-      "name": "comment.eskip"
-    },
-    {
-      "begin": "/",
-      "beginCaptures": {
-        "1": {
-          "name": "markup.punctuation.quote.beginning"
-        }
-      },
-      "end": "/",
-      "endCaptures": {
-        "1": {
-          "name": "markup.punctuation.quote.end"
-        }
-      },
-      "name": "constant.regexp"
-    },
-    {
-      "match": "<(.*)>",
-      "name": "entity.name.tag"
-    },
-    {
-      "match": "[0-9]+",
-      "name": "constant.numeric"
-    },
-    {
-      "include": "#keywords"
-    },
-    {
-      "include": "#strings"
-    }
+    { "include": "#comments" },
+    { "include": "#keywords" },
+    { "include": "#tags" },
+    { "include": "#strings" },
+    { "include": "#regexp" },
+    { "include": "#numeric" },
+    { "include": "#routeid" },
+    { "include": "#operators" },
+    { "include": "#filter" }
   ],
   "foldingStartMarker": "[a-zA-Z0-9_]:|\\n",
   "foldingStopMarker": ";",
   "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "match": "//(.*)",
+          "name": "comment"
+        }
+      ]
+    },
     "keywords": {
       "patterns": [
         {
@@ -78,6 +46,92 @@
         {
           "name": "constant.character.escape.eskip",
           "match": "\\\\."
+        }
+      ]
+    },
+    "regexp": {
+      "name": "constant.regexp.eskip",
+      "patterns": [
+        {
+          "name": "constant.regexp",
+          "begin": "(/)",
+          "beginCaptures": {
+            "1": {
+              "name": "meta.preprocessor"
+            }
+          },
+          "end": "(/)",
+          "endCaptures": {
+            "1": {
+              "name": "meta.preprocessor"
+            }
+          }
+        }
+      ]
+    },
+    "numeric": {
+      "name": "constant.numeric.eskip",
+      "patterns": [
+        {
+          "name": "constant.numeric",
+          "match": "[0-9]+"
+        }
+      ]
+    },
+    "routeid": {
+      "name": "header.routeid",
+      "patterns": [
+        {
+          "begin": "([[:alpha:]_]+)",
+          "beginCaptures": {
+            "1": {
+              "name": "markup.heading"
+            }
+          },
+          "end": ":"
+        }
+      ]
+    },
+    "operators": {
+      "name": "keyword.operators.eskip",
+      "patterns": [
+        {
+          "match": "->",
+          "name": "keyword.control"
+        },
+        {
+          "match": "&&",
+          "name": "keyword.operator"
+        }
+      ]
+    },
+    "tags": {
+      "name": "entity.name.tag.eskip",
+      "patterns": [
+        {
+          "match": "<(.*)>",
+          "name": "entity.name.tag"
+        }
+      ]
+    },
+    "filter": {
+      "name": "entity.filter.eskip",
+      "patterns": [
+        {
+          "name": "variable.name",
+          "begin": "\\s*([[:alpha:]_]+)\\s*(\\()\\s*",
+          "beginCaptures": {
+            "1": {
+              "name": "support.function"
+            }
+          },
+          "end": "\\s*(\\))\\s*",
+          "patterns": [
+            { "include": "#keywords" },
+            { "include": "#regexp" },
+            { "include": "#numeric" },
+            { "include": "#strings" }
+          ]
         }
       ]
     }
