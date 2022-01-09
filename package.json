@@ -37,5 +37,8 @@
   },
   "displayName": "eskip",
   "icon": "images/skipper.png",
-  "publisher": "boopathi"
+  "publisher": "boopathi",
+  "devDependencies": {
+    "vsce": "^2.6.3"
+  }
 }
