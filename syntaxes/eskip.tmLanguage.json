@@ -1,23 +1,26 @@
 {
-  "$schema":
-    "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "name": "Skipper eskip",
   "scopeName": "text.eskip",
   "fileTypes": ["eskip"],
   "patterns": [
     {
       "match": "\\*",
-      "name": "meta.selector"
+      "name": "support.function"
     },
     { "include": "#routeid" },
     { "include": "#comments" },
     { "include": "#keywords" },
-    { "include": "#tags" },
+    { "include": "#backends" },
+    { "include": "#algorithms" },
+    { "include": "#operators" },
+
+
     { "include": "#strings" },
     { "include": "#regexp" },
     { "include": "#numeric" },
-    { "include": "#operators" },
-    { "include": "#filter" }
+    { "include": "#functions" },
+    { "include": "#tags" }
   ],
   "foldingStartMarker": "([[:alpha:][:digit:]]+):|\\*",
   "foldingStopMarker": ";",
@@ -27,14 +30,6 @@
         {
           "match": "//(.*)",
           "name": "comment"
-        }
-      ]
-    },
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.control.eskip",
-          "match": "\\b(Path|PathSubtree|PathRegexp|Host|Method|\\*)\\b"
         }
       ]
     },
@@ -82,13 +77,13 @@
       "name": "header.routeid",
       "patterns": [
         {
-          "begin": "([[:alpha:][:digit:]_]+):",
+          "begin": "^([[:alpha:][:digit:]\\s_]+)(?=:)",
           "beginCaptures": {
             "1": {
               "name": "markup.heading"
             }
           },
-          "end": ""
+          "end": ":"
         }
       ]
     },
@@ -101,33 +96,58 @@
         },
         {
           "match": "&&",
-          "name": "keyword.operator"
+          "name": "keyword.control"
         }
       ]
+    },
+    "algorithms": {
+      "match": "(roundRobin|random|consistentHash|powerOfRandomNChoices)",
+      "name": "support.type"
+    },
+    "backends": {
+      "patterns": [
+        {"include": "#strings"}
+      ]
+    },
+    "shunt": {
+      "match": "shunt",
+      "name": "emphasis"
     },
     "tags": {
       "name": "entity.name.tag.eskip",
       "patterns": [
         {
           "match": "<(.*)>",
+          "captures": {
+            "1": {
+              "patterns": [
+                { "include": "#algorithms" },
+                { "include": "#backends" },
+                { "include": "#shunt" }
+              ]
+            }
+          },
           "name": "entity.name.tag"
         }
       ]
     },
-    "filter": {
-      "name": "entity.filter.eskip",
+    "functions": {
+      "name": "entity.function.eskip",
       "patterns": [
         {
           "name": "variable.name",
           "begin": "\\s*([[:alpha:][:digit:]_]+)\\s*(\\()\\s*",
           "beginCaptures": {
             "1": {
-              "name": "support.function"
+              "name": "support.function",
+              "patterns": [
+                { "include": "#filters" },
+                { "include": "#predicates" }
+              ]
             }
           },
           "end": "\\s*(\\))\\s*",
           "patterns": [
-            { "include": "#keywords" },
             { "include": "#regexp" },
             { "include": "#numeric" },
             { "include": "#strings" }
