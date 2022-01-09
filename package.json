@@ -40,5 +40,8 @@
   "publisher": "boopathi",
   "devDependencies": {
     "vsce": "^2.6.3"
+  },
+  "scripts": {
+    "deploy": "vsce publish --yarn"
   }
 }
