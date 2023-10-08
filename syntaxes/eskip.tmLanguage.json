@@ -45,22 +45,13 @@
       ]
     },
     "regexp": {
-      "name": "constant.regexp.eskip",
+      "name": "string.regexp.eskip",
+      "begin": "/",
+      "end": "/",
       "patterns": [
         {
-          "name": "constant.regexp",
-          "begin": "(/)",
-          "beginCaptures": {
-            "1": {
-              "name": "meta.preprocessor"
-            }
-          },
-          "end": "(/)",
-          "endCaptures": {
-            "1": {
-              "name": "meta.preprocessor"
-            }
-          }
+          "name": "constant.character.escape.eskip",
+          "match": "\\\\."
         }
       ]
     },
@@ -69,7 +60,7 @@
       "patterns": [
         {
           "name": "constant.numeric",
-          "match": "[0-9]+"
+          "match": "([0-9]+[.])?[0-9]+"
         }
       ]
     },
@@ -77,7 +68,7 @@
       "name": "header.routeid",
       "patterns": [
         {
-          "begin": "^([[:alpha:][:digit:]\\s_]+)(?=:)",
+          "begin": "^([[:alpha:][:digit:]_]+)(?=\\s*:)",
           "beginCaptures": {
             "1": {
               "name": "markup.heading"
@@ -102,7 +93,7 @@
     },
     "algorithms": {
       "match": "(roundRobin|random|consistentHash|powerOfRandomNChoices)",
-      "name": "support.type"
+      "name": "emphasis"
     },
     "backends": {
       "patterns": [
@@ -132,14 +123,14 @@
       ]
     },
     "functions": {
-      "name": "entity.function.eskip",
+      "name": "variable.function.eskip",
       "patterns": [
         {
-          "name": "variable.name",
+          "name": "variable.function",
           "begin": "\\s*([[:alpha:][:digit:]_]+)\\s*(\\()\\s*",
           "beginCaptures": {
             "1": {
-              "name": "support.function",
+              "name": "variable.function",
               "patterns": [
                 { "include": "#filters" },
                 { "include": "#predicates" }
